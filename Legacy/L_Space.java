@@ -1,13 +1,15 @@
+package Legacy;
+
 import java.util.Random;
 
 
-class Space{
+class L_Space {
 
-    public Planet root;
+    public L_Planet root;
 
 
     // randomly generate space
-    public Space(){
+    public L_Space(){
 
         Random r = new Random();
 
@@ -17,7 +19,7 @@ class Space{
             neighbors = r.nextInt(3);
         } while (neighbors == 0);
 
-        this.root = new Planet(neighbors,"root");
+        this.root = new L_Planet(neighbors,"root");
 
         fillNeighborhood(root);
 
@@ -25,7 +27,7 @@ class Space{
 
     }
 
-    private void fillNeighborhood(Planet root){
+    private void fillNeighborhood(L_Planet root){
         if (root.num_adjs == 0) { return; }
 
         Random r = new Random();
@@ -33,7 +35,7 @@ class Space{
 
         for (int i = 0; i < root.num_adjs; i++) {
             neighbors = r.nextInt(3);
-            Planet n = new Planet(neighbors, "a");
+            L_Planet n = new L_Planet(neighbors, "a");
 
             fillNeighborhood(n);
 

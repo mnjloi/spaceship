@@ -1,20 +1,20 @@
-import java.util.Random;
+package Legacy;
 
-class Planet{
+class L_Planet {
 
     public String name;
     public int num_adjs;
-    public Planet[] adjs;
+    public L_Planet[] adjs;
 
     // no-neighbor planet
-    public Planet(int num_neighbors, String name){
+    public L_Planet(int num_neighbors, String name){
         this.num_adjs = num_neighbors;
         this.name = name;
-        this.adjs = new Planet[num_adjs];
+        this.adjs = new L_Planet[num_adjs];
     }
 
     // add neighbor
-    public int add_neighbor(Planet neighbor){
+    public int add_neighbor(L_Planet neighbor){
         for(int i = 0; i < num_adjs; i++){
             if (adjs[i] == null) {
                 adjs[i] = neighbor;
