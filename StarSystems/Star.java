@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+
 public class Star {
     public int sID;
     public String sName;
-    public ArrayList<Planet> P = new ArrayList<Planet>();
+    public ArrayList<Planet> P = new ArrayList<>();
 
     public Star(int n, int ID, List<Culture> cultures) {
         this.sID = ID;

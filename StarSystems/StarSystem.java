@@ -1,5 +1,6 @@
 package StarSystems;
 
+import DataTypes.Edge;
 import DataTypes.Graph;
 import DataTypes.Node;
 
@@ -8,7 +9,9 @@ import java.util.Random;
 
 public class StarSystem {
     public int sysID;
-    public Graph<Star> stars = new Graph<Star>();
+    public Graph<Star> stars = new Graph<>();
+    public static int maxPlanets = 5;
+
 
     public StarSystem(int ID, int numStars, List<Culture> cultures) {
 
@@ -16,13 +19,34 @@ public class StarSystem {
 
         Random r = new Random();
         for (int i = 0; i < numStars; i++) {
-            int n = r.nextInt(1,9);
+            int n = r.nextInt(1,maxPlanets);
 
             Node<Star> starN = new Node<>(new Star(
                     n, (ID*1000+i),cultures
             ));
 
             stars.add_node(starN);
+        }
+
+        for (Node<Star> starNode: stars.V){
+            if (stars.num_neighbors(starNode) == 0){
+                Node<Star> randNode;
+                do {
+                    randNode = stars.V.get(r.nextInt(stars.V.size()));
+                } while (starNode == randNode);
+                stars.E.addLast(new Edge<>(starNode,randNode));
+            }
+            for (int i = 0; i < r.nextInt(0,(int)(stars.V.size() * 0.5));
+                 i++) {
+                try {
+                    Node<Star> randNode;
+                    do {
+                        randNode = stars.V.get(r.nextInt(stars.V.size()));
+                    } while (starNode == randNode);
+                    stars.E.addLast(new Edge<>(starNode,randNode));
+                } catch (Exception _) {
+                }
+            }
         }
 
     }

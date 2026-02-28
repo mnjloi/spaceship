@@ -8,8 +8,8 @@ public class Graph<T> {
     public ArrayList<Edge<T>> E;
 
     public Graph(){
-        this.V = new ArrayList<Node<T>>();
-        this.E = new ArrayList<Edge<T>>();
+        this.V = new ArrayList<>();
+        this.E = new ArrayList<>();
     }
 
     public void add_node(Node<T> n){
@@ -18,6 +18,9 @@ public class Graph<T> {
 
     public void add_edge(Edge<T> n){
         if (V.contains(n.a) && V.contains(n.b)){
+            if (E.contains(n) || E.contains(n.flip())) {
+                throw new Error("edge already exists.");
+            }
             E.add(n);
         }
         else {
@@ -27,7 +30,7 @@ public class Graph<T> {
 
     public ArrayList<Node<T>> neighbors(Node<T> n){
 
-        ArrayList<Node<T>> neighborList = new ArrayList<Node<T>>();
+        ArrayList<Node<T>> neighborList = new ArrayList<>();
 
         if (!V.contains(n)){
             throw new Error("no such node in graph.");
