@@ -23,8 +23,8 @@ public class Star {
 
         if (r.nextBoolean()){
             for (int i = 0; i < n; i++) {
-                String name = (sName + "-" + (i+1));
-                P.add(new Planet((ID*1000+i), name));
+                String name = (sName + "-" + ( i + 1 ));
+                P.add(new Planet((ID*1000 + i), name));
             }
         }
         else {
@@ -33,7 +33,7 @@ public class Star {
             boolean flag = true;
 
             for (int i = 0; i < n - 1; i++) {
-                int c = makePlanet(n, ID, cultures);
+                int c = makePlanet(i, ID, cultures);
                 if (c>0) { flag = false; }
             }
             if (flag) {
