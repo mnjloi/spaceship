@@ -12,9 +12,11 @@ public class Star {
     public int sID;
     public String sName;
     public ArrayList<Planet> P = new ArrayList<>();
+    public StarSystem sys;
 
-    public Star(int n, int ID, List<Culture> cultures) {
+    public Star(int n, int ID, List<Culture> cultures, StarSystem sys) {
         this.sID = ID;
+        this.sys = sys;
 
         NameGen gen = new NameGen();
         Random r = new Random();
@@ -83,7 +85,7 @@ public class Star {
 
     static void tp(int t) {
         for (int i = 0; i < t; i++) {
-            System.out.print(" - ");
+            System.out.print("─");
         }
     }
 

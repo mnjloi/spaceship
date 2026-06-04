@@ -2,7 +2,6 @@ package StarSystems;
 
 import DataTypes.NameGen;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class Culture {

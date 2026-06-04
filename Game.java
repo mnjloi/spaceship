@@ -1,5 +1,6 @@
 import StarSystems.Culture;
 import StarSystems.StarSystem;
+import ship.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ public class Game {
     public Ship spaceship;
     public List<StarSystem> starSystemList;
     public List<Culture> cultures;
-    public static int maxStars = 5;
-    public static int maxCultures = 5;
+    public static int maxStars = 8;
+    public static int maxCultures = 6;
 
     public Game() {
         cultures = new ArrayList<>();

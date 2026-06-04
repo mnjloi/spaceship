@@ -10,7 +10,7 @@ import java.util.Random;
 public class StarSystem {
     public int sysID;
     public Graph<Star> stars = new Graph<>();
-    public static int maxPlanets = 5;
+    public static int maxPlanets = 6;
 
 
     public StarSystem(int ID, int numStars, List<Culture> cultures) {
@@ -22,7 +22,7 @@ public class StarSystem {
             int n = r.nextInt(1,maxPlanets);
 
             Node<Star> starN = new Node<>(new Star(
-                    n, (ID*1000+i),cultures
+                    n, (ID*1000+i),cultures, this
             ));
 
             stars.add_node(starN);
@@ -61,8 +61,17 @@ public class StarSystem {
             System.out.println();
             starNode.key.tabPrint(t+1);
             Star.tp(t+1);
-            System.out.println("Number of neighbors: " + stars.num_neighbors(starNode));
+            java.util.ArrayList<Node<Star>> neighborList = stars.neighbors(starNode);
+            System.out.print("Neighbors: ");
+            for (Node<Star> neighbor : neighborList){
+                System.out.print((neighbor.key.sName) + " ");
+            }
+            System.out.println();
         }
     }
 
+    public boolean hasStar(Star dest) {
+        Node<Star> starNode = new Node<Star>(dest);
+        return stars.has_node(starNode);
+    }
 }
