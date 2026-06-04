@@ -1,2 +1,2 @@
 # spaceship
-space of ship
+shipment of space
