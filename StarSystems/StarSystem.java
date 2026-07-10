@@ -2,6 +2,7 @@ package StarSystems;
 
 import DataTypes.Edge;
 import DataTypes.Graph;
+import DataTypes.NameGen;
 import DataTypes.Node;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Random;
 
 public class StarSystem {
     public int sysID;
+    public String sysName;
     public Graph<Star> stars = new Graph<>();
     public static int maxPlanets = 6;
 
@@ -17,9 +19,14 @@ public class StarSystem {
 
         this.sysID = ID;
 
+        NameGen gen = new NameGen();
         Random r = new Random();
+
+        int n = r.nextInt(1,5);
+        this.sysName = gen.generateName(n);
+
         for (int i = 0; i < numStars; i++) {
-            int n = r.nextInt(1,maxPlanets);
+            n = r.nextInt(1,maxPlanets);
 
             Node<Star> starN = new Node<>(new Star(
                     n, (ID*1000+i),cultures, this
@@ -74,4 +81,6 @@ public class StarSystem {
         Node<Star> starNode = new Node<Star>(dest);
         return stars.has_node(starNode);
     }
+
+
 }
